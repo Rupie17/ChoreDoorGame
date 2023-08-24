@@ -17,6 +17,7 @@ let doorImage2 = document.getElementById('door2');
 let doorImage3 = document.getElementById('door3');
 let startButton = document.getElementById('start');
 
+// check if a door has been clicked and opened
 const isClicked = door => {
   if (door.src === closedDoorPath) {
     return true;
@@ -25,6 +26,7 @@ const isClicked = door => {
   }
 }
 
+// if the bot is behind the door, return true and lose.
 const isBot = door => {
   if (door.src === botDoorPath) {
     return true;
@@ -40,6 +42,7 @@ const gameOver = status => {
   currentlyPlaying = false;
 }
 
+// as doors are opened, decrement the counter and if you open 2 doors with no bot you win!
 const playDoor = door => {
   numClosedDoors -= 1;
   if (numClosedDoors === 1) {
@@ -50,6 +53,7 @@ const playDoor = door => {
   }
 }
 
+// randomize where the bot shows up.
 const randomChoreDoorGenerator = () => {
   const choreDoor = Math.floor(Math.random() * numClosedDoors);
   if (choreDoor === 0) {
